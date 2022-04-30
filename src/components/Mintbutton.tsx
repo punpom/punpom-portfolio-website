@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Mintbutton: React.FC<Props> = (props) => {
-    const {active, account, library, connector, activate } = useWeb3React()
+    const { active, account, library, connector, activate } = useWeb3React()
     const [metamask, setMetamask] = useState<boolean>(true)
     
     
