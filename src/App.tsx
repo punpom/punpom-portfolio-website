@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './styles/App.css';
 import me from './images/me.png'
 import { Mintbutton } from './components/Mintbutton';
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       </div>
       <h1>Hello, I am <span className="my-name">Lucas CARRILHO GOMES</span> <span className="wave">👋</span></h1>
       <h4>I am a front-end & Solidity developer from France</h4>
-      <Mintbutton numberOfMint={1}/>
+      <Mintbutton />
       <Links />
     </div>
     </Web3ReactProvider>

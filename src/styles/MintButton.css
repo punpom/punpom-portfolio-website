@@ -37,3 +37,8 @@ a {
 a:hover {
     text-decoration:underline;
 }
+
+.disconnect {
+    cursor: pointer;
+    margin-top: 15px;
+}

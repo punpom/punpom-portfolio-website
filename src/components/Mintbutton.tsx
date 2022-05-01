@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState } from "react";
 import '../styles/MintButton.css';
 import {ethers} from "ethers";
 import { injected } from "../wallet/connectors";
@@ -6,12 +6,10 @@ import { useWeb3React } from "@web3-react/core";
 
 
 
-interface Props {
-    numberOfMint: number;
-}
 
-export const Mintbutton: React.FC<Props> = (props) => {
-    const {active, account, library, connector, activate } = useWeb3React()
+
+export const Mintbutton: React.FC = () => {
+    const {active, account, library, connector, activate, deactivate } = useWeb3React()
     const [metamask, setMetamask] = useState<boolean>(true)
     const minting_address = "0x2438C87a55CaF6047098C3425d502dD05F533b52"
     
@@ -59,7 +57,17 @@ export const Mintbutton: React.FC<Props> = (props) => {
         }
     }
 
-    const mintNewNFT = async function(howMuch: number) {
+    const disconnect = async function() {
+        try {
+            deactivate()
+        }
+        catch(error) {
+            console.log(error)
+        }
+
+    }
+
+    const mintNewNFT = async function() {
         var provider = new ethers.providers.Web3Provider((window as any).ethereum)
         var signer = provider.getSigner();
         console.log(active, account)
@@ -77,9 +85,10 @@ export const Mintbutton: React.FC<Props> = (props) => {
 
     return (
         <>
-        {!active ? <button className="walletbutton" onClick={() => connect()}>Connect your wallet</button> : <button className="mintbutton" onClick={() => mintNewNFT(props.numberOfMint)}>Mint my resume</button>}
+        {!active ? <button className="walletbutton" onClick={() => connect()}>Connect your wallet</button> : <button className="mintbutton" onClick={() => mintNewNFT()}>Mint my resume</button>}
         {active && <div className="minting-infos">
           <h5>Mint me on Rinkeby</h5>
+          <h5 className="disconnect"><a onClick={disconnect}>Disconnect</a></h5>
         </div>}
         {!active && <h5 className="download"><a href="https://drive.google.com/file/d/1ZLjgX6d5HtZhteQFHrvkJtaJOKvEzmqn/view?usp=sharing" target="_blank" rel="noreferrer">Download my resume</a></h5>}
         </>
