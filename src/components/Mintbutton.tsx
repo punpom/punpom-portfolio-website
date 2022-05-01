@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../styles/MintButton.css';
-import ethers from "ethers";
+import {ethers} from "ethers";
 import { injected } from "../wallet/connectors";
 import { useWeb3React } from "@web3-react/core";
 
@@ -13,6 +13,7 @@ interface Props {
 export const Mintbutton: React.FC<Props> = (props) => {
     const {active, account, library, connector, activate } = useWeb3React()
     const [metamask, setMetamask] = useState<boolean>(true)
+    const minting_address = "0x2438C87a55CaF6047098C3425d502dD05F533b52"
     
     
     const connect = async function() {
@@ -59,7 +60,18 @@ export const Mintbutton: React.FC<Props> = (props) => {
     }
 
     const mintNewNFT = async function(howMuch: number) {
+        var provider = new ethers.providers.Web3Provider((window as any).ethereum)
+        var signer = provider.getSigner();
         console.log(active, account)
+        const mintingContract = new ethers.Contract(minting_address, [
+            'function mint() external'
+        ], signer)
+        try {
+            await mintingContract.mint();
+        }
+        catch(error) {
+            console.log(error)
+        }
     
     }
 
