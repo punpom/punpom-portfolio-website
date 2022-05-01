@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../styles/MintButton.css';
 import ethers from "ethers";
 import { injected } from "../wallet/connectors";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Mintbutton: React.FC<Props> = (props) => {
-    const { active, account, library, connector, activate } = useWeb3React()
+    const {active, account, library, connector, activate } = useWeb3React()
     const [metamask, setMetamask] = useState<boolean>(true)
     
     
@@ -32,6 +32,7 @@ export const Mintbutton: React.FC<Props> = (props) => {
                         params: [{ chainId: '0x4' }],
                     });
                     await activate(injected) 
+                
                 }
                 catch {
                     try {
@@ -58,15 +59,17 @@ export const Mintbutton: React.FC<Props> = (props) => {
     }
 
     const mintNewNFT = async function(howMuch: number) {
-        
-
+        console.log(active, account)
+    
     }
+
     return (
         <>
         {!active ? <button className="walletbutton" onClick={() => connect()}>Connect your wallet</button> : <button className="mintbutton" onClick={() => mintNewNFT(props.numberOfMint)}>Mint my resume</button>}
         {active && <div className="minting-infos">
           <h5>Mint me on Rinkeby</h5>
         </div>}
+        {!active && <h5 className="download"><a href="https://drive.google.com/file/d/1ZLjgX6d5HtZhteQFHrvkJtaJOKvEzmqn/view?usp=sharing" target="_blank" rel="noreferrer">Download my resume</a></h5>}
         </>
     )
 

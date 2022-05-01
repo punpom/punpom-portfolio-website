@@ -24,3 +24,16 @@
 .minting-infos {
     margin-top: 10px;
 }
+
+.download {
+    margin-top:10px;
+}
+
+a {
+    text-decoration: none;
+    color: #272635;
+}
+
+a:hover {
+    text-decoration:underline;
+}
