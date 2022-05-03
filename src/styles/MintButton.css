@@ -1,4 +1,4 @@
-.mintbutton, .walletbutton, .downloadbutton {
+.mintbutton, .walletbutton {
     margin-top:35px;
     border: none;
     border-radius: 5px;
@@ -9,6 +9,7 @@
     color: white;
     font-size: large;
     font-weight: 500;
+    transition: transform 500ms ease;
    
 }
 
@@ -19,6 +20,7 @@
 .mintbutton:hover, .walletbutton:hover {
     background-color: #2e5bc5;
     color:whitesmoke;
+    transform: scale(1.04);
 }
 
 .minting-infos {

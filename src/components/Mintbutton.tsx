@@ -4,10 +4,6 @@ import {ethers} from "ethers";
 import { injected } from "../wallet/connectors";
 import { useWeb3React } from "@web3-react/core";
 
-
-
-
-
 export const Mintbutton: React.FC = () => {
     const {active, account, library, connector, activate, deactivate } = useWeb3React()
     const [metamask, setMetamask] = useState<boolean>(true)

@@ -19,8 +19,13 @@ body {
 }
 .profile-image {
   border-radius: 50%;
-  border: 1px solid rgb(202, 202, 202);
+  transition: transform 500ms ease;
 }
+
+.profile-image:hover {
+  transform: scale(1.08);
+}
+
 
 .my-name {
   color: #3772FF;
