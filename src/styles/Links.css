@@ -3,4 +3,14 @@
 }
 .github-icon {
     margin-right: 20px;
+    transition: transform 500ms ease;
+}
+.github-icon:hover {
+    transform: scale(1.10);
+}
+.twitter-icon {
+    transition: transform 500ms ease;
+}
+.twitter-icon:hover {
+    transform: scale(1.10);
 }
